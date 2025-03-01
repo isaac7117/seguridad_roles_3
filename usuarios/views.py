@@ -1,18 +1,21 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import UserCreationForm
+from .forms import UsuarioCreationForm
+from .models import Usuario
 
 def registro(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UsuarioCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.rol = 'usuario'  # Asigna un rol por defecto
             user.save()
             login(request, user)
             return redirect('inicio')
+        else:
+            print(form.errors)  # Imprime los errores del formulario en la consola
     else:
-        form = UserCreationForm()
+        form = UsuarioCreationForm()
     return render(request, 'usuarios/registro.html', {'form': form})
 
 def inicio_sesion(request):

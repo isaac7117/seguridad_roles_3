@@ -129,3 +129,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = 'usuarios.Usuario'
+
+CSRF_FAILURE_VIEW = 'usuarios.views.csrf_failure_view'

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Iniciar sesión</title>
 </head>
 <body>
     <h1>Iniciar sesión</h1>
-    <form method="post">
+    <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
         <label for="username">Usuario:</label>
         <input type="text" name="username" required>
@@ -17,5 +17,8 @@
         <br>
         <button type="submit">Iniciar sesión</button>
     </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
 </body>
 </html>

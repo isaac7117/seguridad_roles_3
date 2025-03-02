@@ -5,6 +5,7 @@ from .models import Usuario
 from django.views.decorators.csrf import requires_csrf_token
 from django.template import RequestContext
 
+
 def registro(request):
     if request.method == 'POST':
         form = UsuarioCreationForm(request.POST)
@@ -12,15 +13,13 @@ def registro(request):
             user = form.save(commit=False)
             user.rol = 'usuario'  # Asigna un rol por defecto
             user.save()
-            login(request, user)  # Autentica al usuario
-            return redirect('inicio')  # Redirige a la página de inicio
+            login(request, user)
+            return redirect('inicio')
         else:
-            print(form.errors)  # Imprime errores en la consola para depuración
+            print(form.errors)
     else:
         form = UsuarioCreationForm()
     return render(request, 'usuarios/registro.html', {'form': form})
-
-
 
 def inicio_sesion(request):
     if request.method == 'POST':
@@ -34,6 +33,7 @@ def inicio_sesion(request):
 
 def inicio(request):
     return render(request, 'usuarios/inicio.html')
+
 
 @requires_csrf_token
 def csrf_failure_view(request, reason=""):

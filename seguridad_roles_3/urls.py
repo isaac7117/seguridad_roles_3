@@ -17,12 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import RedirectView  # Importa RedirectView
-from usuarios.views import inicio, registro, inicio_sesion  # Importa las vistas
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuarios/', include('usuarios.urls')),
-    path('', RedirectView.as_view(url='/registro/')),  # Redirige la ruta raíz a /registro
-    path('registro/', registro, name='registro'),  # Ruta para el registro
-    path('login/', inicio_sesion, name='login'),  # Ruta para el inicio de sesión
+    path('', RedirectView.as_view(url='usuarios/registro/')),
 ]

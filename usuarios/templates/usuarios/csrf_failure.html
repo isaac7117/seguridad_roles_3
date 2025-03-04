@@ -58,7 +58,7 @@
         <h1>Usuario o contraseña inválida</h1>
         <p>Vuelve a intentarlo más tarde.</p>
         <p>Por favor, recarga la página e intenta nuevamente.</p>
-        <button  class="reload-button" onclick="window.location.reload()">Recargar Página</button>
+        <button  class="{% url 'login' %}" onclick="window.location.reload()">Recargar Página</button>
     </div>
 </body>
 </html>

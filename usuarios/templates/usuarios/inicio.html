@@ -68,7 +68,7 @@
         <p>Tu rol es: {{ user.rol }}</p>
 
         <!-- Botón para cerrar sesión -->
-        <a href="http://127.0.0.1:8000/login/" class="logout-button">Cerrar Sesión</a>
+        <a href="{% url 'login' %}" class="logout-button">Cerrar Sesión</a>
     </div>
 </body>
 </html>

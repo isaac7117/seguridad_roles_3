@@ -90,7 +90,7 @@
         </form>
 
         <!-- Botón para registrarse -->
-        <a href="http://127.0.0.1:8000/registro/" class="register-button">Registrarse</a>
+        <a href="{% url 'registro' %}" class="register-button">Registrarse</a>
 
         {% if error %}
             <p class="error-message">{{ error }}</p>
